@@ -1,5 +1,40 @@
+var randomFunction = { 
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol
+};
+
+
+function getRandomLower(){
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
+}
+function getRandomUpper(){
+  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
+}
+function getRandomNumber(){
+  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+}
+function getRandomSymbol(){
+  const symbols = "!@#$%^&*(){}[]=<>/,."
+  return symbols[Math.floor(Math.random() * symbols.length)];
+}
+
+
+
+
+
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
+var submitBtn = document.querySelector("#submitBtn");
+var passwordEl = document.querySelector("#password");
+var lengthEl = document.querySelector("#length");
+var upperCaseEl = document.querySelector("#upperCase");
+var lowerCaseEl = document.querySelector("#lowerCase");
+var numbersEl = document.querySelector("#numbers");
+var symbolsEl = document.querySelector("#symbols");
+var generateEl = document.querySelector("#generate");
+
 
 // Write password to the #password input
 function writePassword() {
@@ -23,8 +58,20 @@ if (passCard.classList.contains("d-none")) {
 
 }
 
+
+function criteriaSubmit(event) {
+  event.preventDefault();
+  var length = +lengthEl.value;
+  var hasUpper = upperCaseEl.checked;
+  var hasLower = lowerCaseEl.checked;
+  var hasNumber = numbersEl.checked;
+  var hasSymbol = symbolsEl.checked;
+  console.log(length,hasUpper,hasLower,hasNumber,hasSymbol);
+}
+
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+submitBtn.addEventListener("click", criteriaSubmit);
 
 
 
@@ -54,29 +101,3 @@ generateBtn.addEventListener("click", writePassword);
 
 // check boxes : lower case, upper case, numeric, special  charactors, length.
 
-const randomFunction = { 
-  lower: getRandomLower,
-  upper: getRandomUpper,
-  number: getRandomNumber,
-  symbol: getRandomSymbol
-};
-
-
-
-
-
-function getRandomLower(){
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
-}
-function getRandomUpper(){
-  return String.fromCharCode(Math.floor(Math.random() * 26) + 65);
-}
-function getRandomNumber(){
-  return String.fromCharCode(Math.floor(Math.random() * 10) + 48);
-}
-function getRandomSymbol(){
-  const symbols = "!@#$%^&*(){}[]=<>/,."
-  return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
-console.log(getRandomSymbol());
