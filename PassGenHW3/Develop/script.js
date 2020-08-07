@@ -36,7 +36,7 @@ var symbolsEl = document.querySelector("#symbols");
 var generateEl = document.querySelector("#generate");
 
 
-// Write password to the #password input
+ //Write password to the #password input
 function writePassword() {
 //deactivte d-none
 var passCard = document.querySelector("#passCard");
@@ -51,10 +51,9 @@ if (passCard.classList.contains("d-none")) {
 
 
 
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
+  //var password = generatePassword();
+  //var passwordText = document.querySelector("#password");
+  //passwordText.value = password;
 
 }
 
@@ -66,9 +65,41 @@ function criteriaSubmit(event) {
   var hasLower = lowerCaseEl.checked;
   var hasNumber = numbersEl.checked;
   var hasSymbol = symbolsEl.checked;
-  console.log(length,hasUpper,hasLower,hasNumber,hasSymbol);
+  
+  passwordEl.innertext = generatePassword(length,hasUpper,hasLower,hasNumber,hasSymbol);
 }
+function generatePassword(length,upper,lower,number,symbol){
 
+  var generatedPassword = "";
+
+  var typesCount = upper + lower + number + symbol;
+  //console.log("typesCount:", typesCount);
+
+  var typesArr = [{upper}, {lower}, {number}, {symbol}].filter
+  (
+    item => Object.values(item)[0]
+  );
+
+  //console.log("typerArr", typesArr);
+
+  if(typesCount === 0) {
+    return "";
+  }
+
+  for (var i = 0; i < length; i += typesCount) {
+    typesArr.forEach(type => {
+      var funcName = Object.keys(type)[0];
+     //console.log("funcName", funcName); 
+    
+    generatedPassword += randomFunction[funcName]();
+  });
+  } 
+  
+  //return finalPassword;
+  var finalPassword = generatedPassword;
+  console.log (finalPassword);
+
+}
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 submitBtn.addEventListener("click", criteriaSubmit);
