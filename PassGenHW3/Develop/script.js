@@ -66,7 +66,7 @@ function criteriaSubmit(event) {
   var hasNumber = numbersEl.checked;
   var hasSymbol = symbolsEl.checked;
   
-  passwordEl.innertext = generatePassword(length,hasUpper,hasLower,hasNumber,hasSymbol);
+  passwordEl.innerText = generatePassword(length,hasUpper,hasLower,hasNumber,hasSymbol);
 }
 function generatePassword(length,upper,lower,number,symbol){
 
@@ -97,7 +97,7 @@ function generatePassword(length,upper,lower,number,symbol){
   
   //return finalPassword;
   var finalPassword = generatedPassword;
-  console.log (finalPassword);
+  return finalPassword;
 
 }
 // Add event listener to generate button
