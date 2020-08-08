@@ -1,10 +1,5 @@
-var randomFunction = { 
-  lower: getRandomLower,
-  upper: getRandomUpper,
-  number: getRandomNumber,
-  symbol: getRandomSymbol
-};
 
+//Criteria Functions
 
 function getRandomLower(){
   return String.fromCharCode(Math.floor(Math.random() * 26) + 97);
@@ -19,6 +14,14 @@ function getRandomSymbol(){
   const symbols = "!@#$%^&*(){}[]=<>/,."
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
+
+//Random Function Object
+var randomFunction = { 
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol
+};
 
 
 
@@ -36,28 +39,22 @@ var symbolsEl = document.querySelector("#symbols");
 var generateEl = document.querySelector("#generate");
 
 
- //Write password to the #password input
+ //passCard function
 function writePassword() {
 //deactivte d-none
 var passCard = document.querySelector("#passCard");
 
-if (passCard.classList.contains("d-none")) {
-  passCard.classList.remove("d-none");
+  if (passCard.classList.contains("d-none")) {
+    passCard.classList.remove("d-none");
 
-} else {
-  passCard.classList.add("d-none");
-} 
-
-
-
-
-  //var password = generatePassword();
-  //var passwordText = document.querySelector("#password");
-  //passwordText.value = password;
+  } 
+  else {
+    passCard.classList.add("d-none");
+    } 
 
 }
 
-
+//check box
 function criteriaSubmit(event) {
   event.preventDefault();
   var length = +lengthEl.value;
@@ -68,6 +65,8 @@ function criteriaSubmit(event) {
   
   passwordEl.innerText = generatePassword(length,hasUpper,hasLower,hasNumber,hasSymbol);
 }
+
+//generate password
 function generatePassword(length,upper,lower,number,symbol){
 
   var generatedPassword = "";
@@ -100,9 +99,9 @@ function generatePassword(length,upper,lower,number,symbol){
   return finalPassword;
 
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-submitBtn.addEventListener("click", criteriaSubmit);
+// Event listeners
+  generateBtn.addEventListener("click", writePassword);
+  submitBtn.addEventListener("click", criteriaSubmit);
 
 
 
