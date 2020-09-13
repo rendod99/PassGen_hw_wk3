@@ -3,3 +3,6 @@
 
  Link to Github repository:
  https://github.com/rendod99/PassGen_hw_wk3
+ 
+ link to deployed application:
+ https://rendod99.github.io/PassGen_hw_wk3/
