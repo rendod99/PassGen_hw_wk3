@@ -13,3 +13,5 @@ Javascript
  https://rendod99.github.io/PassGen_hw_wk3/
 
 <img width="1211" alt="Password_generator" src="https://user-images.githubusercontent.com/66277385/93031786-0bad8280-f5f3-11ea-8c73-74089663e872.png">
+
+https://img.shields.io/npm/l/mi?style=for-the-badge
